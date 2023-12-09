@@ -27,7 +27,7 @@ public class DataGenerator {
         SimpleDateFormat sdf = new SimpleDateFormat("yy");
 
         var faker = new Faker();
-        return sdf.format(faker.date().future(0, TimeUnit.DAYS));
+        return sdf.format(faker.date().future(1, TimeUnit.DAYS));
     }
 
     public static String generateName(String locale) {
@@ -38,6 +38,15 @@ public class DataGenerator {
     public static String generateSecurityCode() {
         var faker = new Faker();
         return faker.number().digits(3);
+    }
+
+    public static class Registration {
+        private Registration() {
+        }
+
+        public static CardInfo generateCard(String locale) {
+            return new CardInfo(generateCardNumber(), generateMonth(), generateYear(), generateName(locale), generateSecurityCode());
+        }
     }
 
     @Value

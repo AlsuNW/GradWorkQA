@@ -20,9 +20,4 @@ public class DashboardPage {
         dashboardHead.$(byText("Купить")).click();
         return new PaymentGate();
     }
-
-    public CreditGate selectCreditOption(DataGenerator.CardInfo cardInfo) {
-        dashboardHead.$(byText("Купить в кредит")).click();
-        return new CreditGate();
-    }
 }

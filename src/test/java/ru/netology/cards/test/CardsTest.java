@@ -2,12 +2,14 @@ package ru.netology.cards.test;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.Keys;
+import ru.netology.cards.data.DataGenerator;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
+import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class CardsTest {
     @BeforeEach
@@ -18,12 +20,29 @@ public class CardsTest {
     @Test
     void shouldOpenPaymentForm() {
         $(byText("Купить")).click();
-        $(".heading").shouldHave(text("Оплата по карте"));
+        $(byText("Оплата по карте")).shouldBe(visible);
+//        $$(".heading").filterBy(text("Оплата по карте"));
     }
 
     @Test
     void shouldOpenCreditForm() {
         $(byText("Купить в кредит")).click();
-        $(".heading").shouldHave(text("Кредит по данным карты"));
+        $(byText("Кредит по данным карты")).shouldBe(visible);
+//        $(".heading").shouldHave(text("Кредит по данным карты"));
+    }
+
+    @Test
+    void shouldFillFormWithValidData() {
+        $(byText("Купить")).click();
+        $(byText("Оплата по карте")).shouldBe(visible);
+        DataGenerator.CardInfo validCard = DataGenerator.Registration.generateCard("en");
+        $("span.input").click();
+        $("input.input__control").setValue(validCard.getCardNumber());
+        $("input[placeholder='08']").setValue(validCard.getMonth());
+        $("input[placeholder='22']").setValue(validCard.getYear());
+        $("input:eq(3)").setValue(validCard.getName());
+        $("input[placeholder='999']").setValue(validCard.getSecurityCode());
+        $(byText("Продолжить")).click();
+        $(".notification_status_ok").shouldBe(visible, Duration.ofSeconds(15));
     }
 }
