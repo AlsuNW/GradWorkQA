@@ -143,4 +143,134 @@ public class CardsTest {
         $(byText("Продолжить")).click();
         $(".notification_status_ok").shouldBe(visible, Duration.ofSeconds(15));
     }
+
+    @Test
+    void shouldFillCreditFormWithValidData() {
+        $(byText("Купить в кредит")).click();
+        $(byText("Кредит по данным карты")).shouldBe(visible);
+        DataGenerator.CardInfo validCard = DataGenerator.Registration.generateCard("en");
+        $("span.input").click();
+        $("input.input__control").setValue(validCard.getCardNumber());
+        $("input[placeholder='08']").setValue(validCard.getMonth());
+        $("input[placeholder='22']").setValue(validCard.getYear());
+        $("nameInput = input.get(3)").setValue(validCard.getName());
+        $("input[placeholder='999']").setValue(validCard.getSecurityCode());
+        $(byText("Продолжить")).click();
+        $(".notification_status_ok").shouldBe(visible, Duration.ofSeconds(15));
+    }
+
+    @Test
+    void shouldNotInputInvalidDataToFieldCardNumberCredit() {
+        $(byText("Купить в кредит")).click();
+        $(byText("Кредит по данным карты")).shouldBe(visible);
+        $("span.input").click();
+        $("input.input__control").setValue(";,.:%");
+        $("input.input__control").shouldBe(empty);
+    }
+
+    @Test
+    void shouldNotInputInvalidDataToFieldYearCredit() {
+        $(byText("Купить в кредит")).click();
+        $(byText("Кредит по данным карты")).shouldBe(visible);
+        $("input[placeholder='22']").click();
+        $("input[placeholder='22']").setValue("AB");
+        $("input[placeholder='22']").shouldBe(empty);
+    }
+
+    @Test
+    void shouldNotInputInvalidDataToFieldMonthCredit() {
+        $(byText("Купить в кредит")).click();
+        $(byText("Кредит по данным карты")).shouldBe(visible);
+        $("input[placeholder='08']").click();
+        $("input[placeholder='08']").setValue("AB");
+        $("input[placeholder='08']").shouldBe(empty);
+    }
+
+    @Test
+    void shouldNotInputInvalidDataToFieldNameCredit() {
+        $(byText("Купить в кредит")).click();
+        $(byText("Кредит по данным карты")).shouldBe(visible);
+        $("nameInput = input.get(3)").click();
+        $("nameInput = input.get(3)").setValue("1234 56789");
+        $("nameInput = input.get(3)").shouldBe(empty);
+    }
+
+    @Test
+    void shouldNotInputInvalidDataToFieldSecurityCodeCredit() {
+        $(byText("Купить в кредит")).click();
+        $(byText("Кредит по данным карты")).shouldBe(visible);
+        $("input[placeholder='999']").click();
+        $("input[placeholder='999']").setValue("ASD");
+        $("input[placeholder='999']").shouldBe(empty);
+    }
+
+    @Test
+    void shouldGetErrorMessagesWhenFormEmptyCredit() {
+        $(byText("Купить в кредит")).click();
+        $(byText("Кредит по данным карты")).shouldBe(visible);
+        $(byText("Продолжить")).click();
+        $("span.input__sub").shouldBe(visible, Duration.ofSeconds(15));
+    }
+
+    @Test
+    void shouldTestIfCardNumberCanBeZeroCredit() {
+        $(byText("Купить в кредит")).click();
+        $(byText("Кредит по данным карты")).shouldBe(visible);
+        DataGenerator.CardInfo validCard = DataGenerator.Registration.generateCard("en");
+        $("span.input").click();
+        $("input.input__control").setValue("0000 0000 0000 0000");
+        $("input[placeholder='08']").setValue(validCard.getMonth());
+        $("input[placeholder='22']").setValue(validCard.getYear());
+        $("nameInput = input.get(3)").setValue(validCard.getName());
+        $("input[placeholder='999']").setValue(validCard.getSecurityCode());
+        $(byText("Продолжить")).click();
+        $(".notification_status_ok").shouldBe(visible, Duration.ofSeconds(15));
+    }
+
+    @Test
+    void shouldTestIfSecurityCodeCanBeZeroCredit() {
+        $(byText("Купить в кредит")).click();
+        $(byText("Кредит по данным карты")).shouldBe(visible);
+        DataGenerator.CardInfo validCard = DataGenerator.Registration.generateCard("en");
+        $("span.input").click();
+        $("input.input__control").setValue(validCard.getCardNumber());
+        $("input[placeholder='08']").setValue(validCard.getMonth());
+        $("input[placeholder='22']").setValue(validCard.getYear());
+        $("nameInput = input.get(3)").setValue(validCard.getName());
+        $("input[placeholder='999']").setValue("000");
+        $(byText("Продолжить")).click();
+        $(".notification_status_ok").shouldBe(visible, Duration.ofSeconds(15));
+    }
+
+    @Test
+    void shouldGetErrorMessageIfDateIsInPast() {
+        $(byText("Купить")).click();
+        $(byText("Оплата по карте")).shouldBe(visible);
+        DataGenerator.CardInfo validCard = DataGenerator.Registration.generateCard("en");
+        $("span.input").click();
+        $("input.input__control").setValue(validCard.getCardNumber());
+        $("input[placeholder='08']").setValue(validCard.getMonth());
+        $("input[placeholder='22']").setValue("22");
+        $("nameInput = input.get(3)").setValue(validCard.getName());
+        $("input[placeholder='999']").setValue(validCard.getSecurityCode());
+        $(byText("Продолжить")).click();
+        $(byText("Истек срок действия карты")).shouldBe(visible, Duration.ofSeconds(15));
+    }
+
+    @Test
+    void shouldCloseMessageWithCross() {
+        $(byText("Купить")).click();
+        $(byText("Оплата по карте")).shouldBe(visible);
+        DataGenerator.CardInfo validCard = DataGenerator.Registration.generateCard("en");
+        $("span.input").click();
+        $("input.input__control").setValue(validCard.getCardNumber());
+        $("input[placeholder='08']").setValue(validCard.getMonth());
+        $("input[placeholder='22']").setValue(validCard.getYear());
+        $("nameInput = input.get(3)").setValue(validCard.getName());
+        $("input[placeholder='999']").setValue(validCard.getSecurityCode());
+        $(byText("Продолжить")).click();
+        $(".notification_status_ok").shouldBe(visible, Duration.ofSeconds(15));
+        $("span.icon").click();
+        $(".notification_status_ok").shouldNotBe(visible, Duration.ofSeconds(15));
+    }
 }

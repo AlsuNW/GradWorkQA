@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="37e98b27-e401-43f5-affc-9d3b4f6ae70b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datamysql/#ib_16384_0.dblwr" beforeDir="false" afterPath="$PROJECT_DIR$/datamysql/#ib_16384_0.dblwr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datamysql/#innodb_redo/#ib_redo10" beforeDir="false" afterPath="$PROJECT_DIR$/datamysql/#innodb_redo/#ib_redo10" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datamysql/app/credit_request_entity.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/datamysql/app/credit_request_entity.ibd" afterDir="false" />
@@ -20,9 +19,6 @@
       <change beforePath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_0.stat" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_0.stat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_13478.stat" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_13478.stat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/global.stat" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/global.stat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/cards/gate/CreditGate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/cards/gate/DashboardPage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/cards/gate/PaymentGate.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/cards/test/CardsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/cards/test/CardsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,8 +68,8 @@
     &quot;last_directory_selection&quot;: &quot;/Users/alsubikkulova/Desktop/GradWorkQA/src/test/java/ru/netology/cards&quot;
   }
 }</component>
-  <component name="RunManager" selected="Gradle.CardsTest.shouldTestIfSecurityCodeCanBeZero">
-    <configuration name="CardsTest.shouldFillFormWithValidData" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.CardsTest.shouldFillPaymentFormWithValidData">
+    <configuration name="CardsTest.shouldFillCreditFormWithValidData" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -86,7 +82,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;ru.netology.cards.test.CardsTest.shouldFillFormWithValidData&quot;" />
+            <option value="&quot;ru.netology.cards.test.CardsTest.shouldFillCreditFormWithValidData&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -97,7 +93,7 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="CardsTest.shouldGetErrorMessagesWhenFormEmpty" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="CardsTest.shouldFillPaymentFormWithValidData" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -110,7 +106,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;ru.netology.cards.test.CardsTest.shouldGetErrorMessagesWhenFormEmpty&quot;" />
+            <option value="&quot;ru.netology.cards.test.CardsTest.shouldFillPaymentFormWithValidData&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -121,7 +117,7 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="CardsTest.shouldNotInputInvalidDataToFieldSecurityCode" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="CardsTest.shouldNotInputInvalidDataToFieldCardNumberCredit" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -134,7 +130,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;ru.netology.cards.test.CardsTest.shouldNotInputInvalidDataToFieldSecurityCode&quot;" />
+            <option value="&quot;ru.netology.cards.test.CardsTest.shouldNotInputInvalidDataToFieldCardNumberCredit&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -195,11 +191,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.CardsTest.shouldFillPaymentFormWithValidData" />
+        <item itemvalue="Gradle.CardsTest.shouldNotInputInvalidDataToFieldCardNumberCredit" />
+        <item itemvalue="Gradle.CardsTest.shouldFillCreditFormWithValidData" />
         <item itemvalue="Gradle.CardsTest.shouldTestIfSecurityCodeCanBeZero" />
         <item itemvalue="Gradle.CardsTest.shouldTestIfCardNumberCanBeZero" />
-        <item itemvalue="Gradle.CardsTest.shouldFillFormWithValidData" />
-        <item itemvalue="Gradle.CardsTest.shouldGetErrorMessagesWhenFormEmpty" />
-        <item itemvalue="Gradle.CardsTest.shouldNotInputInvalidDataToFieldSecurityCode" />
       </list>
     </recent_temporary>
   </component>
