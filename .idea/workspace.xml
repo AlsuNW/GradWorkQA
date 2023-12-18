@@ -8,9 +8,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datamysql/#ib_16384_0.dblwr" beforeDir="false" afterPath="$PROJECT_DIR$/datamysql/#ib_16384_0.dblwr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datamysql/#innodb_redo/#ib_redo10" beforeDir="false" afterPath="$PROJECT_DIR$/datamysql/#innodb_redo/#ib_redo10" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datamysql/app/credit_request_entity.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/datamysql/app/credit_request_entity.ibd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datamysql/app/order_entity.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/datamysql/app/order_entity.ibd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datamysql/app/payment_entity.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/datamysql/app/payment_entity.ibd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datamysql/app/credit_request_entity.ibd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/datamysql/app/order_entity.ibd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/datamysql/app/payment_entity.ibd" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/datamysql/binlog.000002" beforeDir="false" afterPath="$PROJECT_DIR$/datamysql/binlog.000002" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datamysql/ibdata1" beforeDir="false" afterPath="$PROJECT_DIR$/datamysql/ibdata1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datamysql/mysql.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/datamysql/mysql.ibd" afterDir="false" />
@@ -19,6 +19,7 @@
       <change beforePath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_0.stat" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_0.stat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_13478.stat" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_13478.stat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/global.stat" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/global.stat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/cards/data/DataGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/cards/data/DataGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/cards/test/CardsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/cards/test/CardsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +69,31 @@
     &quot;last_directory_selection&quot;: &quot;/Users/alsubikkulova/Desktop/GradWorkQA/src/test/java/ru/netology/cards&quot;
   }
 }</component>
-  <component name="RunManager" selected="Gradle.CardsTest.shouldFillPaymentFormWithValidData">
+  <component name="RunManager" selected="Gradle.CardsTest.shouldCloseMessageWithCross">
+    <configuration name="CardsTest.shouldCloseMessageWithCross" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;ru.netology.cards.test.CardsTest.shouldCloseMessageWithCross&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>true</ForceTestExec>
+      <method v="2" />
+    </configuration>
     <configuration name="CardsTest.shouldFillCreditFormWithValidData" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -93,7 +118,7 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="CardsTest.shouldFillPaymentFormWithValidData" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="CardsTest.shouldGetErrorMessageIfDateIsInPast" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -106,7 +131,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;ru.netology.cards.test.CardsTest.shouldFillPaymentFormWithValidData&quot;" />
+            <option value="&quot;ru.netology.cards.test.CardsTest.shouldGetErrorMessageIfDateIsInPast&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -117,7 +142,7 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="CardsTest.shouldNotInputInvalidDataToFieldCardNumberCredit" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="CardsTest.shouldGetErrorMessageIfDateIsInPastThisYear" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -130,7 +155,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;ru.netology.cards.test.CardsTest.shouldNotInputInvalidDataToFieldCardNumberCredit&quot;" />
+            <option value="&quot;ru.netology.cards.test.CardsTest.shouldGetErrorMessageIfDateIsInPastThisYear&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -141,7 +166,7 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="CardsTest.shouldTestIfCardNumberCanBeZero" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="CardsTest.shouldGetErrorMessagesWhenFormEmpty" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -154,31 +179,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;ru.netology.cards.test.CardsTest.shouldTestIfCardNumberCanBeZero&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>true</ForceTestExec>
-      <method v="2" />
-    </configuration>
-    <configuration name="CardsTest.shouldTestIfSecurityCodeCanBeZero" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;ru.netology.cards.test.CardsTest.shouldTestIfSecurityCodeCanBeZero&quot;" />
+            <option value="&quot;ru.netology.cards.test.CardsTest.shouldGetErrorMessagesWhenFormEmpty&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -191,11 +192,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.CardsTest.shouldFillPaymentFormWithValidData" />
-        <item itemvalue="Gradle.CardsTest.shouldNotInputInvalidDataToFieldCardNumberCredit" />
+        <item itemvalue="Gradle.CardsTest.shouldCloseMessageWithCross" />
+        <item itemvalue="Gradle.CardsTest.shouldGetErrorMessageIfDateIsInPastThisYear" />
+        <item itemvalue="Gradle.CardsTest.shouldGetErrorMessageIfDateIsInPast" />
+        <item itemvalue="Gradle.CardsTest.shouldGetErrorMessagesWhenFormEmpty" />
         <item itemvalue="Gradle.CardsTest.shouldFillCreditFormWithValidData" />
-        <item itemvalue="Gradle.CardsTest.shouldTestIfSecurityCodeCanBeZero" />
-        <item itemvalue="Gradle.CardsTest.shouldTestIfCardNumberCanBeZero" />
       </list>
     </recent_temporary>
   </component>

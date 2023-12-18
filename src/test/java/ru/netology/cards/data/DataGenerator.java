@@ -14,13 +14,14 @@ public class DataGenerator {
 
     public static String generateCardNumber() {
         var faker = new Faker();
-        return faker.finance().creditCard();
+        return faker.number().digits(16);
+        //return faker.finance().creditCard();
     }
 
     public static String generateMonth() {
         SimpleDateFormat sdf = new SimpleDateFormat("MM");
         var faker = new Faker();
-        return sdf.format(faker.date().birthday());
+        return sdf.format(faker.date().future(1, TimeUnit.DAYS));
     }
 
     public static String generateYear() {

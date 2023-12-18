@@ -1,5 +1,6 @@
 package ru.netology.cards.test;
 
+import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterAll;
@@ -16,6 +17,17 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class CardsTest {
+
+    private SelenideElement buttonBuy = $(byText("Купить"));
+    private SelenideElement headerPaymentByCard = $(byText("Оплата по карте"));
+    private SelenideElement buttonCredit = $(byText("Купить в кредит"));
+    private SelenideElement headerPaymentByCredit = $(byText("Кредит по данным карты"));
+    private SelenideElement cardNumber = $("input[placeholder='0000 0000 0000 0000']");
+    private SelenideElement cardMonth = $("input[placeholder='08']");
+    private SelenideElement cardYear = $("input[placeholder='22']");
+    private SelenideElement cardOwner = $(byText("Владелец")).parent().$("[class='input__control']");
+    private SelenideElement cardSecurityCode = $("input[placeholder='999']");
+    private SelenideElement buttonContinue = $(byText("Продолжить"));
 
     @BeforeAll
     static void setUpAll() {
@@ -34,243 +46,281 @@ public class CardsTest {
 
     @Test
     void shouldOpenPaymentForm() {
-        $(byText("Купить")).click();
-        $(byText("Оплата по карте")).shouldBe(visible);
-//        $$(".heading").filterBy(text("Оплата по карте"));
+        buttonBuy.click();
+        headerPaymentByCard.shouldBe(visible);
     }
 
     @Test
     void shouldOpenCreditForm() {
-        $(byText("Купить в кредит")).click();
-        $(byText("Кредит по данным карты")).shouldBe(visible);
-//        $(".heading").shouldHave(text("Кредит по данным карты"));
+        buttonCredit.click();
+        headerPaymentByCredit.shouldBe(visible);
     }
 
     @Test
     void shouldFillPaymentFormWithValidData() {
-        $(byText("Купить")).click();
-        $(byText("Оплата по карте")).shouldBe(visible);
+        buttonBuy.click();
+        headerPaymentByCard.shouldBe(visible);
         DataGenerator.CardInfo validCard = DataGenerator.Registration.generateCard("en");
-        $("span.input").click();
-        $("input.input__control").setValue(validCard.getCardNumber());
-        $("input[placeholder='08']").setValue(validCard.getMonth());
-        $("input[placeholder='22']").setValue(validCard.getYear());
-        $("nameInput = input.get(3)").setValue(validCard.getName());
-        $("input[placeholder='999']").setValue(validCard.getSecurityCode());
-        $(byText("Продолжить")).click();
+        cardNumber.click();
+        cardNumber.setValue(validCard.getCardNumber());
+        cardMonth.setValue(validCard.getMonth());
+        cardYear.setValue(validCard.getYear());
+        cardOwner.setValue(validCard.getName());
+        cardSecurityCode.setValue(validCard.getSecurityCode());
+        buttonContinue.click();
         $(".notification_status_ok").shouldBe(visible, Duration.ofSeconds(15));
+        $(".notification_status_error").shouldNotBe(visible);
     }
 
     @Test
     void shouldNotInputInvalidDataToFieldCardNumber() {
-        $(byText("Купить")).click();
-        $(byText("Оплата по карте")).shouldBe(visible);
-        $("span.input").click();
-        $("input.input__control").setValue(";,.:%");
-        $("input.input__control").shouldBe(empty);
+        buttonBuy.click();
+        headerPaymentByCard.shouldBe(visible);
+        cardNumber.click();
+        cardNumber.setValue(";,.:%");
+        cardNumber.shouldBe(empty);
     }
 
     @Test
     void shouldNotInputInvalidDataToFieldYear() {
-        $(byText("Купить")).click();
-        $(byText("Оплата по карте")).shouldBe(visible);
-        $("input[placeholder='22']").click();
-        $("input[placeholder='22']").setValue("AB");
-        $("input[placeholder='22']").shouldBe(empty);
+        buttonBuy.click();
+        headerPaymentByCard.shouldBe(visible);
+        cardYear.click();
+        cardYear.setValue("AB");
+        cardYear.shouldBe(empty);
     }
 
     @Test
     void shouldNotInputInvalidDataToFieldMonth() {
-        $(byText("Купить")).click();
-        $(byText("Оплата по карте")).shouldBe(visible);
-        $("input[placeholder='08']").click();
-        $("input[placeholder='08']").setValue("AB");
-        $("input[placeholder='08']").shouldBe(empty);
+        buttonBuy.click();
+        headerPaymentByCard.shouldBe(visible);
+        cardMonth.click();
+        cardMonth.setValue("AB");
+        cardMonth.shouldBe(empty);
     }
 
     @Test
     void shouldNotInputInvalidDataToFieldName() {
-        $(byText("Купить")).click();
-        $(byText("Оплата по карте")).shouldBe(visible);
-        $("nameInput = input.get(3)").click();
-        $("nameInput = input.get(3)").setValue("1234 56789");
-        $("nameInput = input.get(3)").shouldBe(empty);
+        buttonBuy.click();
+        headerPaymentByCard.shouldBe(visible);
+        cardOwner.click();
+        cardOwner.setValue("1234 56789");
+        cardOwner.shouldBe(empty);
+    }
+
+    @Test
+    void shouldNotInputSymbolsToFieldName() {
+        buttonBuy.click();
+        headerPaymentByCard.shouldBe(visible);
+        cardOwner.click();
+        cardOwner.setValue(";'..,");
+        cardOwner.shouldBe(empty);
     }
 
     @Test
     void shouldNotInputInvalidDataToFieldSecurityCode() {
-        $(byText("Купить")).click();
-        $(byText("Оплата по карте")).shouldBe(visible);
-        $("input[placeholder='999']").click();
-        $("input[placeholder='999']").setValue("ASD");
-        $("input[placeholder='999']").shouldBe(empty);
+        buttonBuy.click();
+        headerPaymentByCard.shouldBe(visible);
+        cardSecurityCode.click();
+        cardSecurityCode.setValue("ASD");
+        cardSecurityCode.shouldBe(empty);
     }
 
     @Test
     void shouldGetErrorMessagesWhenFormEmpty() {
-        $(byText("Купить")).click();
-        $(byText("Оплата по карте")).shouldBe(visible);
-        $(byText("Продолжить")).click();
+        buttonBuy.click();
+        headerPaymentByCard.shouldBe(visible);
+        buttonContinue.click();
         $("span.input__sub").shouldBe(visible, Duration.ofSeconds(15));
+        $(byText("Неверный формат")).shouldBe(visible, Duration.ofSeconds(15));
     }
 
     @Test
     void shouldTestIfCardNumberCanBeZero() {
-        $(byText("Купить")).click();
-        $(byText("Оплата по карте")).shouldBe(visible);
+        buttonBuy.click();
+        headerPaymentByCard.shouldBe(visible);
         DataGenerator.CardInfo validCard = DataGenerator.Registration.generateCard("en");
-        $("span.input").click();
-        $("input.input__control").setValue("0000 0000 0000 0000");
-        $("input[placeholder='08']").setValue(validCard.getMonth());
-        $("input[placeholder='22']").setValue(validCard.getYear());
-        $("nameInput = input.get(3)").setValue(validCard.getName());
-        $("input[placeholder='999']").setValue(validCard.getSecurityCode());
-        $(byText("Продолжить")).click();
+        cardNumber.click();
+        cardNumber.setValue("0000 0000 0000 0000");
+        cardMonth.setValue(validCard.getMonth());
+        cardYear.setValue(validCard.getYear());
+        cardOwner.setValue(validCard.getName());
+        cardSecurityCode.setValue(validCard.getSecurityCode());
+        buttonContinue.click();
         $(".notification_status_ok").shouldBe(visible, Duration.ofSeconds(15));
+        $(".notification_status_error").shouldNotBe(visible);
     }
 
     @Test
     void shouldTestIfSecurityCodeCanBeZero() {
-        $(byText("Купить")).click();
-        $(byText("Оплата по карте")).shouldBe(visible);
+        buttonBuy.click();
+        headerPaymentByCard.shouldBe(visible);
         DataGenerator.CardInfo validCard = DataGenerator.Registration.generateCard("en");
-        $("span.input").click();
-        $("input.input__control").setValue(validCard.getCardNumber());
-        $("input[placeholder='08']").setValue(validCard.getMonth());
-        $("input[placeholder='22']").setValue(validCard.getYear());
-        $("nameInput = input.get(3)").setValue(validCard.getName());
-        $("input[placeholder='999']").setValue("000");
-        $(byText("Продолжить")).click();
+        cardNumber.click();
+        cardNumber.setValue(validCard.getCardNumber());
+        cardMonth.setValue(validCard.getMonth());
+        cardYear.setValue(validCard.getYear());
+        cardOwner.setValue(validCard.getName());
+        cardSecurityCode.setValue("000");
+        buttonContinue.click();
         $(".notification_status_ok").shouldBe(visible, Duration.ofSeconds(15));
+        $(".notification_status_error").shouldNotBe(visible);
     }
 
     @Test
     void shouldFillCreditFormWithValidData() {
-        $(byText("Купить в кредит")).click();
-        $(byText("Кредит по данным карты")).shouldBe(visible);
+        buttonCredit.click();
+        headerPaymentByCredit.shouldBe(visible);
         DataGenerator.CardInfo validCard = DataGenerator.Registration.generateCard("en");
-        $("span.input").click();
-        $("input.input__control").setValue(validCard.getCardNumber());
-        $("input[placeholder='08']").setValue(validCard.getMonth());
-        $("input[placeholder='22']").setValue(validCard.getYear());
-        $("nameInput = input.get(3)").setValue(validCard.getName());
-        $("input[placeholder='999']").setValue(validCard.getSecurityCode());
-        $(byText("Продолжить")).click();
+        cardNumber.click();
+        cardNumber.setValue(validCard.getCardNumber());
+        cardMonth.setValue(validCard.getMonth());
+        cardYear.setValue(validCard.getYear());
+        cardOwner.setValue(validCard.getName());
+        cardSecurityCode.setValue(validCard.getSecurityCode());
+        buttonContinue.click();
         $(".notification_status_ok").shouldBe(visible, Duration.ofSeconds(15));
+        $(".notification_status_error").shouldNotBe(visible);
     }
 
     @Test
     void shouldNotInputInvalidDataToFieldCardNumberCredit() {
-        $(byText("Купить в кредит")).click();
-        $(byText("Кредит по данным карты")).shouldBe(visible);
-        $("span.input").click();
-        $("input.input__control").setValue(";,.:%");
-        $("input.input__control").shouldBe(empty);
+        buttonCredit.click();
+        headerPaymentByCredit.shouldBe(visible);
+        cardNumber.click();
+        cardNumber.setValue(";,.:%");
+        cardNumber.shouldBe(empty);
     }
 
     @Test
     void shouldNotInputInvalidDataToFieldYearCredit() {
-        $(byText("Купить в кредит")).click();
-        $(byText("Кредит по данным карты")).shouldBe(visible);
-        $("input[placeholder='22']").click();
-        $("input[placeholder='22']").setValue("AB");
-        $("input[placeholder='22']").shouldBe(empty);
+        buttonCredit.click();
+        headerPaymentByCredit.shouldBe(visible);
+        cardYear.click();
+        cardYear.setValue("AB");
+        cardYear.shouldBe(empty);
     }
 
     @Test
     void shouldNotInputInvalidDataToFieldMonthCredit() {
-        $(byText("Купить в кредит")).click();
-        $(byText("Кредит по данным карты")).shouldBe(visible);
-        $("input[placeholder='08']").click();
-        $("input[placeholder='08']").setValue("AB");
-        $("input[placeholder='08']").shouldBe(empty);
+        buttonCredit.click();
+        headerPaymentByCredit.shouldBe(visible);
+        cardMonth.click();
+        cardMonth.setValue("AB");
+        cardMonth.shouldBe(empty);
     }
 
     @Test
     void shouldNotInputInvalidDataToFieldNameCredit() {
-        $(byText("Купить в кредит")).click();
-        $(byText("Кредит по данным карты")).shouldBe(visible);
-        $("nameInput = input.get(3)").click();
-        $("nameInput = input.get(3)").setValue("1234 56789");
-        $("nameInput = input.get(3)").shouldBe(empty);
+        buttonCredit.click();
+        headerPaymentByCredit.shouldBe(visible);
+        cardOwner.click();
+        cardOwner.setValue("1234 56789");
+        cardOwner.shouldBe(empty);
+    }
+
+    @Test
+    void shouldNotInputSymbolsToFieldNameCredit() {
+        buttonCredit.click();
+        headerPaymentByCredit.shouldBe(visible);
+        cardOwner.click();
+        cardOwner.setValue(";'..,");
+        cardOwner.shouldBe(empty);
     }
 
     @Test
     void shouldNotInputInvalidDataToFieldSecurityCodeCredit() {
-        $(byText("Купить в кредит")).click();
-        $(byText("Кредит по данным карты")).shouldBe(visible);
-        $("input[placeholder='999']").click();
-        $("input[placeholder='999']").setValue("ASD");
-        $("input[placeholder='999']").shouldBe(empty);
+        buttonCredit.click();
+        headerPaymentByCredit.shouldBe(visible);
+        cardSecurityCode.click();
+        cardSecurityCode.setValue("ASD");
+        cardSecurityCode.shouldBe(empty);
     }
 
     @Test
     void shouldGetErrorMessagesWhenFormEmptyCredit() {
-        $(byText("Купить в кредит")).click();
-        $(byText("Кредит по данным карты")).shouldBe(visible);
-        $(byText("Продолжить")).click();
+        buttonCredit.click();
+        headerPaymentByCredit.shouldBe(visible);
+        buttonContinue.click();
         $("span.input__sub").shouldBe(visible, Duration.ofSeconds(15));
     }
 
     @Test
     void shouldTestIfCardNumberCanBeZeroCredit() {
-        $(byText("Купить в кредит")).click();
-        $(byText("Кредит по данным карты")).shouldBe(visible);
+        buttonCredit.click();
+        headerPaymentByCredit.shouldBe(visible);
         DataGenerator.CardInfo validCard = DataGenerator.Registration.generateCard("en");
-        $("span.input").click();
-        $("input.input__control").setValue("0000 0000 0000 0000");
-        $("input[placeholder='08']").setValue(validCard.getMonth());
-        $("input[placeholder='22']").setValue(validCard.getYear());
-        $("nameInput = input.get(3)").setValue(validCard.getName());
-        $("input[placeholder='999']").setValue(validCard.getSecurityCode());
-        $(byText("Продолжить")).click();
+        cardNumber.click();
+        cardNumber.setValue("0000 0000 0000 0000");
+        cardMonth.setValue(validCard.getMonth());
+        cardYear.setValue(validCard.getYear());
+        cardOwner.setValue(validCard.getName());
+        cardSecurityCode.setValue(validCard.getSecurityCode());
+        buttonContinue.click();
         $(".notification_status_ok").shouldBe(visible, Duration.ofSeconds(15));
+        $(".notification_status_error").shouldNotBe(visible);
     }
 
     @Test
     void shouldTestIfSecurityCodeCanBeZeroCredit() {
-        $(byText("Купить в кредит")).click();
-        $(byText("Кредит по данным карты")).shouldBe(visible);
+        buttonCredit.click();
+        headerPaymentByCredit.shouldBe(visible);
         DataGenerator.CardInfo validCard = DataGenerator.Registration.generateCard("en");
-        $("span.input").click();
-        $("input.input__control").setValue(validCard.getCardNumber());
-        $("input[placeholder='08']").setValue(validCard.getMonth());
-        $("input[placeholder='22']").setValue(validCard.getYear());
-        $("nameInput = input.get(3)").setValue(validCard.getName());
-        $("input[placeholder='999']").setValue("000");
-        $(byText("Продолжить")).click();
+        cardNumber.click();
+        cardNumber.setValue(validCard.getCardNumber());
+        cardMonth.setValue(validCard.getMonth());
+        cardYear.setValue(validCard.getYear());
+        cardOwner.setValue(validCard.getName());
+        cardSecurityCode.setValue("000");
+        buttonContinue.click();
         $(".notification_status_ok").shouldBe(visible, Duration.ofSeconds(15));
+        $(".notification_status_error").shouldNotBe(visible);
     }
 
     @Test
-    void shouldGetErrorMessageIfDateIsInPast() {
-        $(byText("Купить")).click();
-        $(byText("Оплата по карте")).shouldBe(visible);
+    void shouldGetErrorMessageIfYearIsInPast() {
+        buttonCredit.click();
+        headerPaymentByCredit.shouldBe(visible);
         DataGenerator.CardInfo validCard = DataGenerator.Registration.generateCard("en");
-        $("span.input").click();
-        $("input.input__control").setValue(validCard.getCardNumber());
-        $("input[placeholder='08']").setValue(validCard.getMonth());
-        $("input[placeholder='22']").setValue("22");
-        $("nameInput = input.get(3)").setValue(validCard.getName());
-        $("input[placeholder='999']").setValue(validCard.getSecurityCode());
-        $(byText("Продолжить")).click();
-        $(byText("Истек срок действия карты")).shouldBe(visible, Duration.ofSeconds(15));
+        cardNumber.click();
+        cardNumber.setValue(validCard.getCardNumber());
+        cardMonth.setValue(validCard.getMonth());
+        cardYear.setValue("22");
+        cardOwner.setValue(validCard.getName());
+        cardSecurityCode.setValue(validCard.getSecurityCode());
+        buttonContinue.click();
+        $(byText("Истёк срок действия карты")).shouldBe(visible, Duration.ofSeconds(15));
+    }
+
+    @Test
+    void shouldGetErrorMessageIfDateIsInPastThisYear() {
+        buttonCredit.click();
+        headerPaymentByCredit.shouldBe(visible);
+        DataGenerator.CardInfo validCard = DataGenerator.Registration.generateCard("en");
+        cardNumber.click();
+        cardNumber.setValue(validCard.getCardNumber());
+        cardMonth.setValue("07");
+        cardYear.setValue("23");
+        cardOwner.setValue(validCard.getName());
+        cardSecurityCode.setValue(validCard.getSecurityCode());
+        buttonContinue.click();
+        $(byText("Неверно указан срок действия карты")).shouldBe(visible, Duration.ofSeconds(15));
     }
 
     @Test
     void shouldCloseMessageWithCross() {
-        $(byText("Купить")).click();
-        $(byText("Оплата по карте")).shouldBe(visible);
+        buttonBuy.click();
+        headerPaymentByCard.shouldBe(visible);
         DataGenerator.CardInfo validCard = DataGenerator.Registration.generateCard("en");
-        $("span.input").click();
-        $("input.input__control").setValue(validCard.getCardNumber());
-        $("input[placeholder='08']").setValue(validCard.getMonth());
-        $("input[placeholder='22']").setValue(validCard.getYear());
-        $("nameInput = input.get(3)").setValue(validCard.getName());
-        $("input[placeholder='999']").setValue(validCard.getSecurityCode());
-        $(byText("Продолжить")).click();
-        $(".notification_status_ok").shouldBe(visible, Duration.ofSeconds(15));
-        $("span.icon").click();
-        $(".notification_status_ok").shouldNotBe(visible, Duration.ofSeconds(15));
+        cardNumber.click();
+        cardNumber.setValue(validCard.getCardNumber());
+        cardMonth.setValue(validCard.getMonth());
+        cardYear.setValue(validCard.getYear());
+        cardOwner.setValue(validCard.getName());
+        cardSecurityCode.setValue(validCard.getSecurityCode());
+        buttonContinue.click();
+        $(".notification_status_error").shouldBe(visible, Duration.ofSeconds(15));
+        $("button.icon-button").click();
+        $(".notification_status_error").shouldNotBe(visible, Duration.ofSeconds(15));
     }
 }
