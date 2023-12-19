@@ -73,6 +73,37 @@ public class CardsTest {
     }
 
     @Test
+    void shouldGiveOkMessage() {
+        buttonBuy.click();
+        headerPaymentByCard.shouldBe(visible);
+        DataGenerator.CardInfo validCard = DataGenerator.Registration.generateCard("en");
+        cardNumber.click();
+        cardNumber.setValue("4444 4444 4444 4441");
+        cardMonth.setValue(validCard.getMonth());
+        cardYear.setValue(validCard.getYear());
+        cardOwner.setValue(validCard.getName());
+        cardSecurityCode.setValue(validCard.getSecurityCode());
+        buttonContinue.click();
+        $(".notification_status_ok").shouldBe(visible, Duration.ofSeconds(15));
+        $(".notification_status_error").shouldNotBe(visible);
+    }
+
+    @Test
+    void shouldGiveErrorMessage() {
+        buttonBuy.click();
+        headerPaymentByCard.shouldBe(visible);
+        DataGenerator.CardInfo validCard = DataGenerator.Registration.generateCard("en");
+        cardNumber.click();
+        cardNumber.setValue("4444 4444 4444 4442");
+        cardMonth.setValue(validCard.getMonth());
+        cardYear.setValue(validCard.getYear());
+        cardOwner.setValue(validCard.getName());
+        cardSecurityCode.setValue(validCard.getSecurityCode());
+        buttonContinue.click();
+        $(".notification_status_error").shouldBe(visible, Duration.ofSeconds(15));
+    }
+
+    @Test
     void shouldNotInputInvalidDataToFieldCardNumber() {
         buttonBuy.click();
         headerPaymentByCard.shouldBe(visible);
@@ -313,14 +344,14 @@ public class CardsTest {
         headerPaymentByCard.shouldBe(visible);
         DataGenerator.CardInfo validCard = DataGenerator.Registration.generateCard("en");
         cardNumber.click();
-        cardNumber.setValue(validCard.getCardNumber());
+        cardNumber.setValue("4444 4444 4444 4441");
         cardMonth.setValue(validCard.getMonth());
         cardYear.setValue(validCard.getYear());
         cardOwner.setValue(validCard.getName());
         cardSecurityCode.setValue(validCard.getSecurityCode());
         buttonContinue.click();
-        $(".notification_status_error").shouldBe(visible, Duration.ofSeconds(15));
-        $("button.icon-button").click();
-        $(".notification_status_error").shouldNotBe(visible, Duration.ofSeconds(15));
+        $(".notification_status_ok").shouldBe(visible, Duration.ofSeconds(15));
+        $(".notification_status_ok>button").click();
+        $(".notification_status_ok").shouldNotBe(visible, Duration.ofSeconds(15));
     }
 }
