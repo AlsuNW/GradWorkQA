@@ -354,4 +354,6 @@ public class CardsTest {
         $(".notification_status_ok>button").click();
         $(".notification_status_ok").shouldNotBe(visible, Duration.ofSeconds(15));
     }
+
+
 }
