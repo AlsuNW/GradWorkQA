@@ -213,6 +213,37 @@ public class CardsTest {
         $(".notification_status_ok").shouldBe(visible, Duration.ofSeconds(15));
         $(".notification_status_error").shouldNotBe(visible);
     }
+    @Test
+    void shouldGiveOkMessageCredit() {
+        buttonCredit.click();
+        headerPaymentByCredit.shouldBe(visible);
+        DataGenerator.CardInfo validCard = DataGenerator.Registration.generateCard("en");
+        cardNumber.click();
+        cardNumber.setValue("4444 4444 4444 4441");
+        cardMonth.setValue(validCard.getMonth());
+        cardYear.setValue(validCard.getYear());
+        cardOwner.setValue(validCard.getName());
+        cardSecurityCode.setValue(validCard.getSecurityCode());
+        buttonContinue.click();
+        $(".notification_status_ok").shouldBe(visible, Duration.ofSeconds(15));
+        $(".notification_status_error").shouldNotBe(visible);
+    }
+
+    @Test
+    void shouldGiveErrorMessageCredit() {
+        buttonCredit.click();
+        headerPaymentByCredit.shouldBe(visible);
+        DataGenerator.CardInfo validCard = DataGenerator.Registration.generateCard("en");
+        cardNumber.click();
+        cardNumber.setValue("4444 4444 4444 4442");
+        cardMonth.setValue(validCard.getMonth());
+        cardYear.setValue(validCard.getYear());
+        cardOwner.setValue(validCard.getName());
+        cardSecurityCode.setValue(validCard.getSecurityCode());
+        buttonContinue.click();
+        $(".notification_status_error").shouldBe(visible, Duration.ofSeconds(15));
+    }
+
 
     @Test
     void shouldNotInputInvalidDataToFieldCardNumberCredit() {

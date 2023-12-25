@@ -6,36 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="37e98b27-e401-43f5-affc-9d3b4f6ae70b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datapostgres/base/16384/1247" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/base/16384/1247" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datapostgres/base/16384/1249" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/base/16384/1249" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datapostgres/base/16384/1259" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/base/16384/1259" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datapostgres/base/16384/16413" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datapostgres/base/16384/16416" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datapostgres/base/16384/16418" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datapostgres/base/16384/16419" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datapostgres/base/16384/16421" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datapostgres/base/16384/16424" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datapostgres/base/16384/16426" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datapostgres/base/16384/16427" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datapostgres/base/16384/16429" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datapostgres/base/16384/16432" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datapostgres/base/16384/16434" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datapostgres/base/16384/16435" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datapostgres/base/16384/16437" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datapostgres/base/16384/16439" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datapostgres/base/16384/2606" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/base/16384/2606" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datapostgres/base/16384/2608" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/base/16384/2608" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datapostgres/base/16384/2610" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/base/16384/2610" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datapostgres/global/pg_control" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/global/pg_control" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_0.stat" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_0.stat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_13478.stat" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_13478.stat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_16384.stat" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_16384.stat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/global.stat" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/global.stat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datapostgres/pg_wal/000000010000000000000001" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/pg_wal/000000010000000000000001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datapostgres/pg_xact/0000" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/pg_xact/0000" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/cards/test/CardsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/cards/test/CardsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/cards/test/DatabaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/cards/test/DatabaseTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,21 +60,8 @@
     &quot;last_directory_selection&quot;: &quot;/Users/alsubikkulova/Desktop/GradWorkQA/src/test/java/ru/netology/cards&quot;
   }
 }</component>
-  <component name="RunManager" selected="Gradle.DatabaseTest">
-    <configuration name="DatabaseTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.netology.cards.test.DatabaseTest" />
-      <module name="GradWorkQA.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.netology.cards.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CardsTest.shouldTestIfCardNumberCanBeZero" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.DatabaseTest.shouldSaveToDatabaseDeclinedCredit">
+    <configuration name="CardsTest.shouldGiveErrorMessageCredit" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -111,7 +74,31 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;ru.netology.cards.test.CardsTest.shouldTestIfCardNumberCanBeZero&quot;" />
+            <option value="&quot;ru.netology.cards.test.CardsTest.shouldGiveErrorMessageCredit&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>true</ForceTestExec>
+      <method v="2" />
+    </configuration>
+    <configuration name="CardsTest.shouldGiveOkMessageCredit" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;ru.netology.cards.test.CardsTest.shouldGiveOkMessageCredit&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -146,7 +133,7 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="DatabaseTest.shouldSaveToDatabase" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="DatabaseTest.shouldSaveToDatabaseCredit" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -159,7 +146,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;ru.netology.cards.test.DatabaseTest.shouldSaveToDatabase&quot;" />
+            <option value="&quot;ru.netology.cards.test.DatabaseTest.shouldSaveToDatabaseCredit&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -170,7 +157,7 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="DatabaseTest.shouldSaveToDatabaseDeclined" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="DatabaseTest.shouldSaveToDatabaseDeclinedCredit" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -183,7 +170,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;ru.netology.cards.test.DatabaseTest.shouldSaveToDatabaseDeclined&quot;" />
+            <option value="&quot;ru.netology.cards.test.DatabaseTest.shouldSaveToDatabaseDeclinedCredit&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -196,11 +183,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.DatabaseTest.shouldSaveToDatabaseDeclinedCredit" />
+        <item itemvalue="Gradle.DatabaseTest.shouldSaveToDatabaseCredit" />
+        <item itemvalue="Gradle.CardsTest.shouldGiveErrorMessageCredit" />
+        <item itemvalue="Gradle.CardsTest.shouldGiveOkMessageCredit" />
         <item itemvalue="Gradle.DatabaseTest" />
-        <item itemvalue="Gradle.DatabaseTest.shouldSaveToDatabase" />
-        <item itemvalue="Gradle.DatabaseTest.shouldSaveToDatabaseDeclined" />
-        <item itemvalue="Gradle.CardsTest.shouldTestIfCardNumberCanBeZero" />
-        <item itemvalue="Application.DatabaseTest" />
       </list>
     </recent_temporary>
   </component>

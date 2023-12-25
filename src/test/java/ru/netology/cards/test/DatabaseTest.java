@@ -50,32 +50,25 @@ public class DatabaseTest {
     }
 
     @AfterEach
-    public void cleanAuthCodes() {
+    public void cleanTables() {
 
-        // Database connection parameters
         String url = "jdbc:mysql://localhost:3306/app";
         String username = "app";
         String password = "pass";
 
-        // Try to establish the connection
         try {
-            // Load the JDBC driver
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            // Establish the connection
             Connection connection = getConnection(url, username, password);
 
-            // If the connection is successful, print a success message
             if (connection != null) {
                 System.out.println("Connected to the database!");
 
-                // Query the "payment_entity" table for the status field in the first record
                 String query = "DELETE FROM payment_entity";
                 try (PreparedStatement preparedStatement = connection.prepareStatement(query);
                      ResultSet resultSet = preparedStatement.executeQuery()) {
                 }
 
-                // Remember to close the connection when done
                 connection.close();
             }
 
@@ -99,24 +92,18 @@ public class DatabaseTest {
         buttonContinue.click();
         $(".notification_status_ok").shouldBe(visible, Duration.ofSeconds(15));
 
-        // Database connection parameters
         String url = "jdbc:mysql://localhost:3306/app";
         String username = "app";
         String password = "pass";
 
-        // Try to establish the connection
         try {
-            // Load the JDBC driver
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            // Establish the connection
             Connection connection = getConnection(url, username, password);
 
-            // If the connection is successful, print a success message
             if (connection != null) {
                 System.out.println("Connected to the database!");
 
-                // Query the "payment_entity" table for the status field in the first record
                 String query = "SELECT status\n" +
                         "FROM payment_entity\n" +
                         "ORDER BY created DESC\n" +
@@ -124,9 +111,7 @@ public class DatabaseTest {
                 try (PreparedStatement preparedStatement = connection.prepareStatement(query);
                      ResultSet resultSet = preparedStatement.executeQuery()) {
 
-                    // Check if there are any results
                     if (resultSet.next()) {
-                        // Retrieve the value of the "status" field
                         String status = resultSet.getString("status");
                         Assertions.assertEquals("APPROVED", status);
                     } else {
@@ -134,7 +119,6 @@ public class DatabaseTest {
                     }
                 }
 
-                // Remember to close the connection when done
                 connection.close();
             }
 
@@ -159,30 +143,23 @@ public class DatabaseTest {
         buttonContinue.click();
 
         try {
-            Thread.sleep(15000);  // Sleep for 15 seconds (15,000 milliseconds)
+            Thread.sleep(15000);
         } catch (InterruptedException e) {
-            e.printStackTrace();  // Handle the exception if needed
+            e.printStackTrace();
         }
 
-
-        // Database connection parameters
         String url = "jdbc:mysql://localhost:3306/app";
         String username = "app";
         String password = "pass";
 
-        // Try to establish the connection
         try {
-            // Load the JDBC driver
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            // Establish the connection
             Connection connection = getConnection(url, username, password);
 
-            // If the connection is successful, print a success message
             if (connection != null) {
                 System.out.println("Connected to the database!");
 
-                // Query the "payment_entity" table for the status field in the first record
                 String query = "SELECT status\n" +
                         "FROM payment_entity\n" +
                         "ORDER BY created DESC\n" +
@@ -190,9 +167,7 @@ public class DatabaseTest {
                 try (PreparedStatement preparedStatement = connection.prepareStatement(query);
                      ResultSet resultSet = preparedStatement.executeQuery()) {
 
-                    // Check if there are any results
                     if (resultSet.next()) {
-                        // Retrieve the value of the "status" field
                         String status = resultSet.getString("status");
                         Assertions.assertEquals("DECLINED", status);
                     } else {
@@ -200,7 +175,113 @@ public class DatabaseTest {
                     }
                 }
 
-                // Remember to close the connection when done
+                connection.close();
+            }
+
+        } catch (ClassNotFoundException e) {
+            System.err.println("Error loading JDBC driver: " + e.getMessage());
+        } catch (SQLException e) {
+            System.err.println("Error connecting to the database: " + e.getMessage());
+        }
+    }
+
+    @Test
+    void shouldSaveToDatabaseCredit() {
+        buttonCredit.click();
+        headerPaymentByCredit.shouldBe(visible);
+        DataGenerator.CardInfo validCard = DataGenerator.Registration.generateCard("en");
+        cardNumber.click();
+        cardNumber.setValue("4444 4444 4444 4441");
+        cardMonth.setValue(validCard.getMonth());
+        cardYear.setValue(validCard.getYear());
+        cardOwner.setValue(validCard.getName());
+        cardSecurityCode.setValue(validCard.getSecurityCode());
+        buttonContinue.click();
+        $(".notification_status_ok").shouldBe(visible, Duration.ofSeconds(15));
+
+        String url = "jdbc:mysql://localhost:3306/app";
+        String username = "app";
+        String password = "pass";
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection connection = getConnection(url, username, password);
+
+            if (connection != null) {
+                System.out.println("Connected to the database!");
+
+                String query = "SELECT status\n" +
+                        "FROM credit_request_entity\n" +
+                        "ORDER BY created DESC\n" +
+                        "LIMIT 1;\n";
+                try (PreparedStatement preparedStatement = connection.prepareStatement(query);
+                     ResultSet resultSet = preparedStatement.executeQuery()) {
+
+                    if (resultSet.next()) {
+                        String status = resultSet.getString("status");
+                        Assertions.assertEquals("APPROVED", status);
+                    } else {
+                        System.out.println("No records found in the payment_entity table.");
+                    }
+                }
+
+                connection.close();
+            }
+
+        } catch (ClassNotFoundException e) {
+            System.err.println("Error loading JDBC driver: " + e.getMessage());
+        } catch (SQLException e) {
+            System.err.println("Error connecting to the database: " + e.getMessage());
+        }
+    }
+
+    @Test
+    void shouldSaveToDatabaseDeclinedCredit() {
+        buttonCredit.click();
+        headerPaymentByCredit.shouldBe(visible);
+        DataGenerator.CardInfo validCard = DataGenerator.Registration.generateCard("en");
+        cardNumber.click();
+        cardNumber.setValue("4444 4444 4444 4442");
+        cardMonth.setValue(validCard.getMonth());
+        cardYear.setValue(validCard.getYear());
+        cardOwner.setValue(validCard.getName());
+        cardSecurityCode.setValue(validCard.getSecurityCode());
+        buttonContinue.click();
+
+        try {
+            Thread.sleep(15000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        String url = "jdbc:mysql://localhost:3306/app";
+        String username = "app";
+        String password = "pass";
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection connection = getConnection(url, username, password);
+
+            if (connection != null) {
+                System.out.println("Connected to the database!");
+
+                String query = "SELECT status\n" +
+                        "FROM credit_request_entity\n" +
+                        "ORDER BY created DESC\n" +
+                        "LIMIT 1;\n";
+                try (PreparedStatement preparedStatement = connection.prepareStatement(query);
+                     ResultSet resultSet = preparedStatement.executeQuery()) {
+
+                    if (resultSet.next()) {
+                        String status = resultSet.getString("status");
+                        Assertions.assertEquals("DECLINED", status);
+                    } else {
+                        System.out.println("No records found in the payment_entity table.");
+                    }
+                }
+
                 connection.close();
             }
 
