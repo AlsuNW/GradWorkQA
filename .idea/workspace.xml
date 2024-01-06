@@ -10,8 +10,6 @@
       <change beforePath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_13478.stat" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_13478.stat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_16384.stat" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_16384.stat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/global.stat" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/global.stat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/cards/test/CardsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/cards/test/CardsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/cards/test/DatabaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/cards/test/DatabaseTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
