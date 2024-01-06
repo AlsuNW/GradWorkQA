@@ -10,6 +10,7 @@
       <change beforePath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_13478.stat" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_13478.stat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_16384.stat" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_16384.stat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/global.stat" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/global.stat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/cards/test/CardsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/cards/test/CardsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +59,31 @@
     &quot;last_directory_selection&quot;: &quot;/Users/alsubikkulova/Desktop/GradWorkQA/src/test/java/ru/netology/cards&quot;
   }
 }</component>
-  <component name="RunManager" selected="Gradle.DatabaseTest.shouldSaveToDatabaseDeclinedCredit">
+  <component name="RunManager" selected="Gradle.CardsTest.shouldTestIfCardNumberCanBeZero">
+    <configuration name="CardsTest.shouldGetErrorMessageIfDateIsInPastThisYear" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;ru.netology.cards.test.CardsTest.shouldGetErrorMessageIfDateIsInPastThisYear&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>true</ForceTestExec>
+      <method v="2" />
+    </configuration>
     <configuration name="CardsTest.shouldGiveErrorMessageCredit" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -83,7 +108,7 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="CardsTest.shouldGiveOkMessageCredit" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="CardsTest.shouldTestIfCardNumberCanBeZero" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -96,31 +121,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;ru.netology.cards.test.CardsTest.shouldGiveOkMessageCredit&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>true</ForceTestExec>
-      <method v="2" />
-    </configuration>
-    <configuration name="DatabaseTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;ru.netology.cards.test.DatabaseTest&quot;" />
+            <option value="&quot;ru.netology.cards.test.CardsTest.shouldTestIfCardNumberCanBeZero&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -181,11 +182,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.CardsTest.shouldTestIfCardNumberCanBeZero" />
+        <item itemvalue="Gradle.CardsTest.shouldGetErrorMessageIfDateIsInPastThisYear" />
         <item itemvalue="Gradle.DatabaseTest.shouldSaveToDatabaseDeclinedCredit" />
         <item itemvalue="Gradle.DatabaseTest.shouldSaveToDatabaseCredit" />
         <item itemvalue="Gradle.CardsTest.shouldGiveErrorMessageCredit" />
-        <item itemvalue="Gradle.CardsTest.shouldGiveOkMessageCredit" />
-        <item itemvalue="Gradle.DatabaseTest" />
       </list>
     </recent_temporary>
   </component>

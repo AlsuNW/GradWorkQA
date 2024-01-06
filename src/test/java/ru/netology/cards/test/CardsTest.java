@@ -366,7 +366,7 @@ public class CardsTest {
         cardOwner.setValue(validCard.getName());
         cardSecurityCode.setValue(validCard.getSecurityCode());
         buttonContinue.click();
-        $(byText("Неверно указан срок действия карты")).shouldBe(visible, Duration.ofSeconds(15));
+        $(byText("Истёк срок действия карты")).shouldBe(visible, Duration.ofSeconds(15));
     }
 
     @Test
