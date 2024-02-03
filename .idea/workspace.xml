@@ -5,12 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37e98b27-e401-43f5-affc-9d3b4f6ae70b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_0.stat" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_0.stat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_13478.stat" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_13478.stat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_16384.stat" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_16384.stat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/global.stat" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/global.stat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/cards/test/CardsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/cards/test/CardsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datapostgres/base/16384/1247" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/base/16384/1247" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datapostgres/base/16384/2662" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/base/16384/2662" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datapostgres/base/16384/2703" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/base/16384/2703" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datapostgres/global/pg_control" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/global/pg_control" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_0.stat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_13478.stat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/db_16384.stat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/datapostgres/pg_stat_tmp/global.stat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/datapostgres/pg_wal/000000010000000000000001" beforeDir="false" afterPath="$PROJECT_DIR$/datapostgres/pg_wal/000000010000000000000001" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datapostgres/postmaster.pid" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
