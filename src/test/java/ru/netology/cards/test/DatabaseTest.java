@@ -3,20 +3,24 @@ package ru.netology.cards.test;
         import com.codeborne.selenide.SelenideElement;
         import com.codeborne.selenide.logevents.SelenideLogger;
         import io.qameta.allure.selenide.AllureSelenide;
+        import lombok.SneakyThrows;
         import org.apache.commons.dbutils.QueryRunner;
         import org.junit.jupiter.api.*;
         import ru.netology.cards.data.DataGenerator;
+        import ru.netology.cards.data.SQLHelper;
 
         import java.sql.Connection;;
         import java.sql.PreparedStatement;
         import java.sql.ResultSet;
         import java.sql.SQLException;
         import java.time.Duration;
+        import java.util.Properties;
 
         import static com.codeborne.selenide.Condition.visible;
         import static com.codeborne.selenide.Selectors.byText;
         import static com.codeborne.selenide.Selenide.*;
         import static java.sql.DriverManager.getConnection;
+        import static ru.netology.cards.data.SQLHelper.cleanTables;
 
 
 public class DatabaseTest {
@@ -50,34 +54,36 @@ public class DatabaseTest {
     }
 
     @AfterEach
-    public void cleanTables() {
-
-        String url = "jdbc:mysql://localhost:3306/app";
-        String username = "app";
-        String password = "pass";
-
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-
-            Connection connection = getConnection(url, username, password);
-
-            if (connection != null) {
-                System.out.println("Connected to the database!");
-
-                String query = "DELETE FROM payment_entity";
-                try (PreparedStatement preparedStatement = connection.prepareStatement(query);
-                     ResultSet resultSet = preparedStatement.executeQuery()) {
-                }
-
-                connection.close();
-            }
-
-        } catch (ClassNotFoundException e) {
-            System.err.println("Error loading JDBC driver: " + e.getMessage());
-        } catch (SQLException e) {
-            System.err.println("Error connecting to the database: " + e.getMessage());
-        }
+    void tearDownData() {
+        cleanTables();
     }
+
+//        String url = "jdbc:mysql://localhost:3306/app";
+//        String username = "app";
+//        String password = "pass";
+//
+//        try {
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//
+//            Connection connection = getConnection(url, username, password);
+//
+//            if (connection != null) {
+//                System.out.println("Connected to the database!");
+//
+//                String query = "DELETE FROM payment_entity";
+//                try (PreparedStatement preparedStatement = connection.prepareStatement(query);
+//                     ResultSet resultSet = preparedStatement.executeQuery()) {
+//                }
+//
+//                connection.close();
+//            }
+//
+//        } catch (ClassNotFoundException e) {
+//            System.err.println("Error loading JDBC driver: " + e.getMessage());
+//        } catch (SQLException e) {
+//            System.err.println("Error connecting to the database: " + e.getMessage());
+//        }
+    @SneakyThrows
     @Test
     void shouldSaveToDatabase() {
         buttonBuy.click();
@@ -92,40 +98,47 @@ public class DatabaseTest {
         buttonContinue.click();
         $(".notification_status_ok").shouldBe(visible, Duration.ofSeconds(15));
 
-        String url = "jdbc:mysql://localhost:3306/app";
-        String username = "app";
-        String password = "pass";
 
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-
-            Connection connection = getConnection(url, username, password);
-
-            if (connection != null) {
-                System.out.println("Connected to the database!");
-
-                String query = "SELECT status\n" +
-                        "FROM payment_entity\n" +
-                        "ORDER BY created DESC\n" +
-                        "LIMIT 1;\n";
-                try (PreparedStatement preparedStatement = connection.prepareStatement(query);
-                     ResultSet resultSet = preparedStatement.executeQuery()) {
-
-                    if (resultSet.next()) {
-                        String status = resultSet.getString("status");
-                        Assertions.assertEquals("APPROVED", status);
-                    } else {
-                        System.out.println("No records found in the payment_entity table.");
-                    }
-                }
-
-                connection.close();
-            }
-
-        } catch (ClassNotFoundException e) {
-            System.err.println("Error loading JDBC driver: " + e.getMessage());
-        } catch (SQLException e) {
-            System.err.println("Error connecting to the database: " + e.getMessage());
+//        String url = "jdbc:mysql://localhost:3306/app";
+//        String username = "app";
+//        String password = "pass";
+//
+//        try {
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//
+//            Connection connection = getConnection(url, username, password);
+//
+//            if (connection != null) {
+//                System.out.println("Connected to the database!");
+//
+//                String query = "SELECT status\n" +
+//                        "FROM payment_entity\n" +
+//                        "ORDER BY created DESC\n" +
+//                        "LIMIT 1;\n";
+//                try (PreparedStatement preparedStatement = connection.prepareStatement(query);
+//                     ResultSet resultSet = preparedStatement.executeQuery()) {
+//
+//                    if (resultSet.next()) {
+//                        String status = resultSet.getString("status");
+//                        Assertions.assertEquals("APPROVED", status);
+//                    } else {
+//                        System.out.println("No records found in the payment_entity table.");
+//                    }
+//                }
+//
+//                connection.close();
+//            }
+//
+//        } catch (ClassNotFoundException e) {
+//            System.err.println("Error loading JDBC driver: " + e.getMessage());
+//        } catch (SQLException e) {
+//            System.err.println("Error connecting to the database: " + e.getMessage());
+//        }
+//    }
+        ResultSet resultSet = SQLHelper.sortThroughPaymentEntity();
+        if (resultSet.next()) {
+            String status = resultSet.getString("status");
+            Assertions.assertEquals("APPROVED", status);
         }
     }
 
