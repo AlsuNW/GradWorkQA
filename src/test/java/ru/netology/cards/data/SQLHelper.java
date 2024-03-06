@@ -3,10 +3,7 @@ package ru.netology.cards.data;
 import lombok.SneakyThrows;
 import org.apache.commons.dbutils.QueryRunner;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
-import java.util.Properties;
 
 
 public class SQLHelper {
@@ -15,21 +12,8 @@ public class SQLHelper {
     private SQLHelper() {
     }
 
-    ;
-
     public static Connection getConn() throws SQLException {
-        Properties credentials = readCredentials();
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/app", credentials.getProperty("username"), credentials.getProperty("password"));
-    }
-
-    public static Properties readCredentials() {
-        Properties p = new Properties();
-        try {
-            InputStream s = SQLHelper.class.getResourceAsStream("/credentials.properties");
-            p.load(s);
-        } catch (IOException e) {
-        }
-        return p;
+        return DriverManager.getConnection(System.getProperty("db.url"), System.getProperty("db.user"), System.getProperty("db.password"));
     }
 
     @SneakyThrows
